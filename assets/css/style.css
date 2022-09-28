@@ -2,3 +2,8 @@
     display: grid;
     grid-template-columns: 35% 65%;
 }
+
+.grid-cont {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+}
