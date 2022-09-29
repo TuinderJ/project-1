@@ -9,6 +9,14 @@ inputQueryParams.forEach(paramater => {
   if (dataset[0] === "i") tmdbMovieID = dataset[1];
 });
 
+let history = JSON.parse(localStorage.getItem("movie-history"));
+if (history === null) history = [];
+if (!history.includes(tmdbMovieID)) {
+  history.unshift(tmdbMovieID);
+  if (history.length > 4) history.splice(4);
+}
+localStorage.setItem("movie-history", JSON.stringify(history));
+
 const tmdbURL = `https://api.themoviedb.org/3/movie/${tmdbMovieID}?api_key=${tmdbKey}`;
 fetch(tmdbURL)
   .then(response => {
@@ -24,6 +32,6 @@ fetch(tmdbURL)
         return response.json();
       })
       .then(data => {
-        console.log(data);
+        // console.log(data);
       });
   });
