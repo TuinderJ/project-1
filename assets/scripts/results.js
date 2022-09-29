@@ -40,7 +40,7 @@ fetch(tmdbURL)
       const linkToDetails = document.createElement("p");
       linkToDetails.setAttribute("class", "text-center text-amber-700");
       const link = document.createElement("a");
-      link.setAttribute("href", `./details.html?i=${movie.id}`);
+      link.setAttribute("href", `./full-description.html?i=${movie.id}`);
       link.textContent = "Go to movie's full description";
       linkToDetails.appendChild(link);
       innerContainer.appendChild(linkToDetails);
