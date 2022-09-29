@@ -1,3 +1,5 @@
+var imgEl = document.querySelectorAll("img");
+
 function getUpcoming() {
   const tmdbURL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${tmdbKey}`;
   const imgBaseURL = "https://image.tmdb.org/t/p/";
@@ -8,9 +10,12 @@ function getUpcoming() {
     })
     .then(data => {
       console.log(data);
+      for (var i = 0; i < 10; i++) {
+        imgEl[i].setAttribute("src", imgBaseURL + fileSize + data.results[i].poster_path);
+        }
     });
 }
-
+ getUpcoming();
 // getSearchResults({
 // Next 2 lines are for searching by ID
 // searchBar: "tt2380307",
