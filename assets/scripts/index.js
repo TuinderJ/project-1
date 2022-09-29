@@ -29,6 +29,7 @@ history.forEach(movieID => {
 });
 
 document.getElementById("submit-btn").addEventListener("click", btnClick);
+
 previousMovies.addEventListener("click", e => {
   if (e.target.matches(".previous-movie")) {
     location.href = `./full-description.html?i=${e.target.dataset.id}`;
@@ -36,6 +37,7 @@ previousMovies.addEventListener("click", e => {
     location.href = `./full-description.html?i=${e.target.parentElement.dataset.id}`;
   }
 });
+
 function btnClick(e) {
   e.preventDefault();
   const searchBar = document.getElementById("search");

@@ -28,10 +28,13 @@ function getUpcoming() {
       return response.json();
     })
     .then(data => {
-      console.log(data);
       for (var i = 0; i < 10; i++) {
         imgEl[i].setAttribute("src", imgBaseURL + fileSize + data.results[i].poster_path);
-        }
+        imgEl[i].setAttribute("data-id", data.results[i].id);
+        imgEl[i].addEventListener("click", e => {
+          location.href = `./full-description.html?i=${e.target.dataset.id}`;
+        });
+      }
     });
 }
- getUpcoming();
+getUpcoming();
