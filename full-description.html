@@ -10,24 +10,45 @@
     <title>Movie Finder</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class ="p-12 bg-amber-100 border-solid border-amber-700">
-    <header class ="container mx-auto h-50 bottom-border-solid p-12">
-            <h2 class = "flex justify-start text-3xl text-amber-700 m-5 hover:text-black-100"><a href = "./index.html"> Movie Finder </a></h1>
-            <h1 class="text-4xl text-amber-100 bg-amber-700 text-center font-bold">Coco</h1>
+  <body class ="p-10 bg-amber-100">
+    <header class ="container auto p-12">
+      <h2 class= "flex justify-start text-4xl text-black-100 m-5 hover:text-orange-300"><a href = "./index.html"> Movie Finder </a></h1>
+      <h1 id="movie-title" class="text-5xl p-4 text-amber-100 bg-amber-700 text-center font-bold">Title</h1>
     </header>
-    <main class="container grid grid-rows-2 mx-auto px-20 h-100 border-solid-amber-700">
-              <div class="container flex grid grid-rows-2 grid-col-2 space-x-2 h-100">
-                <!--I was considering to diplay a portion of the main info from the movie just right of the movie poster or picure.-->
-                <img class="p-3 max-h-60 rounded" src="https://lumiere-a.akamaihd.net/v1/images/p_coco_19736_fd5fa537.jpeg?region=0%2C0%2C540%2C810" />
-                <h2 class= "underline text-3xl text-underline text-amber-700">Ratings</h2>
-                <p></p>
-              </div>
-              <!--The movie's full description will contain the majority of the API Data-->
-              <div class = "container">
-              <h1 class = "underline justify-start text-4xl text-amber-700 text-center"> Full Description </h1>
-              <!-- text-amber-600 was used to create a text hierarchy.-->
-                 <P class = "text-amber-600 text-center m-5">Full description placeholder:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et rutrum orci, vitae eleifend ipsum. Nam et faucibus nisi. Aenean ex lacus, accumsan ut porta id, aliquet sit amet orci. Nunc ac tincidunt magna. Quisque volutpat, nisl sed pharetra suscipit, enim nibh finibus arcu, et pretium augue dui at augue. Praesent dignissim, diam sit amet elementum semper, elit lacus finibus nisi, convallis mattis nulla odio nec quam. Fusce sed sem tincidunt, pharetra nisl iaculis, tempus purus. Suspendisse potenti. Pellentesque sit amet tempor metus </P>
-              </div>
+    <main class="container flex-col m-8 px-20">
+      <div class="columns-2 gap-x-4">
+        <!--<div class="flex mb-4">
+          <div class="w-1/2 bg-gray-400 h-12"></div>
+          <div class="w-1/2 bg-gray-500 h-12"></div>
+        </div>-->
+        <!--I was considering to diplay a portion of the main info from the movie just right of the movie poster or picure.-->
+        <div>
+          <img id="poster" class="p-3 m-5 max-h-65 border-8 border-amber-600 rounded justify-center" />
+        </div>
+        <div class="mr-25 mt-15">
+          <h2 class= "border-b-2 border-amber-700 underline text-4xl text-underline text-center text-amber-700 p-8 m-5">Ratings</h2>
+          <div id="ratings" class="text-amber-600 text-xl m-5 leading-2">
+        </div>
+      </div>
+      </div>
+      <!--The movie's full description will contain the majority of the API Data-->
+      <div class = "container">
+      <h2 class = "border-b-2 border-amber-700 underline justify-start text-4xl text-amber-700 max-w-50 text-center p-6 m-5"> Plot</h2>
+      <!-- text-amber-600 was used to create a text hierarchy.-->
+          <P id="plot" class = "text-amber-600 text-xl text-center m-5"></P>
+      </div>
+      <h2 class="border-b-2 border-amber-700 text-amber-700 text-4xl text-center underline p-6 m-5">Genre</h2>
+      <div id="genre" class="text-center text-xl text-amber-600"></div>
+      <h2 class="border-b-2 border-amber-700 text-amber-700 text-4xl text-center underline p-6 m-5">Actors</h2>
+      <!--This class styling should be in java?-->
+      <div id="actors" class="text-amber-600 text-xl text-center"></div>
+      <!--<h2 class="border-b-2 border-amber-700 text-amber-700 text-4xl text-center underline p-6 m-5">Director(s)</h2>
+      <div id="director" class="text-amber-600 text-center"></div>
+      <h2 class="border-b-2 border-amber-700 text-amber-700 text-4xl text-center underline p-6 m-5">Writer(s)</h2>
+      <div id="writer" class="text-amber-600 text-center"></div>
+      <h2 class="border-b-2 border-amber-700 text-amber-700 text-4xl text-center underline p-6 m-5">Boxoffice</h2>
+      <div id="box-office" class ="text-amber-600 text-center"></div>
+      </div>
     </main>
   </body>
 </html>
