@@ -29,6 +29,7 @@ function getUpcoming() {
     })
     .then(data => {
       for (var i = 0; i < 10; i++) {
+        imgEl[i].setAttribute("class", "cursor-pointer");
         imgEl[i].setAttribute("src", imgBaseURL + fileSize + data.results[i].poster_path);
         imgEl[i].setAttribute("data-id", data.results[i].id);
         imgEl[i].addEventListener("click", e => {
