@@ -3,8 +3,13 @@ if (inputQueryParams === "") location.href = "./index.html";
 inputQueryParams = inputQueryParams.substring(1);
 inputQueryParams = inputQueryParams.split("&");
 let queryParams = "";
+let query = "";
 inputQueryParams.forEach(paramater => {
-  queryParams += paramater;
+  queryParams += paramater + "&";
+  splitParam = paramater.split("=");
+  if (splitParam[0] === "query") {
+    query = splitParam[1];
+  }
 });
 
 const tmdbURL = `https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&${queryParams}`;
@@ -45,12 +50,31 @@ fetch(tmdbURL)
       innerContainer.appendChild(linkToDetails);
 
       container.appendChild(innerContainer);
-      document.body.appendChild(container);
+      document.getElementById("search-results").appendChild(container);
     });
+    const pages = document.getElementById("pages");
+    if (data.total_pages < 5) {
+      for (let page = 1; page < data.total_pages.length + 1; page++) {
+        const pageNumber = document.createElement("li");
+        const a = document.createElement("a");
+        a.textContent = page;
+        a.href = `./results.html?query=${query}&page=${page}`;
+        pageNumber.appendChild(a);
+        pages.appendChild(pageNumber);
+      }
+    } else {
+      for (let page = 1; page < 6; page++) {
+        const pageNumber = document.createElement("li");
+        const a = document.createElement("a");
+        a.textContent = page;
+        a.href = `./results.html?query=${query}&page=${page}`;
+        pageNumber.appendChild(a);
+        pages.appendChild(pageNumber);
+      }
+    }
   });
 
 const history = JSON.parse(localStorage.getItem("movie-history"));
-
 const previousMovies = document.getElementById("previous-movies");
 
 history.forEach(movieID => {
@@ -61,7 +85,7 @@ history.forEach(movieID => {
     })
     .then(movie => {
       const previousMovieContainer = document.createElement("div");
-      previousMovieContainer.setAttribute("class", "previous-movie");
+      previousMovieContainer.setAttribute("class", "previous-movie cursor-pointer");
       previousMovieContainer.setAttribute("data-id", movie.id);
 
       const imgBaseURL = "https://image.tmdb.org/t/p";
@@ -78,4 +102,12 @@ history.forEach(movieID => {
 
       previousMovies.appendChild(previousMovieContainer);
     });
+});
+
+previousMovies.addEventListener("click", e => {
+  if (e.target.matches(".previous-movie")) {
+    location.href = `./full-description.html?i=${e.target.dataset.id}`;
+  } else if (e.target.closest(".previous-movie")) {
+    location.href = `./full-description.html?i=${e.target.parentElement.dataset.id}`;
+  }
 });

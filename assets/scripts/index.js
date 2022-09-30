@@ -10,15 +10,18 @@ history.forEach(movieID => {
     })
     .then(movie => {
       const previousMovieContainer = document.createElement("div");
-      previousMovieContainer.setAttribute("class", "previous-movie");
+      previousMovieContainer.setAttribute("class", "previous-movie flex flex-col");
       previousMovieContainer.setAttribute("data-id", movie.id);
 
       const imgBaseURL = "https://image.tmdb.org/t/p";
       const fileSize = "/w200";
       const previousMoviePoster = document.createElement("img");
+      previousMoviePoster.setAttribute("class", "cursor-pointer");
+      previousMoviePoster.style.width = "200px";
       previousMoviePoster.setAttribute("src", `${imgBaseURL}${fileSize}${movie.poster_path}`);
 
       const previousMovieTitle = document.createElement("h3");
+      previousMovieTitle.setAttribute("class", "flex");
       previousMovieTitle.textContent = movie.title;
 
       previousMovieContainer.appendChild(previousMoviePoster);
@@ -28,29 +31,16 @@ history.forEach(movieID => {
     });
 });
 
-document.getElementById("submit-btn").addEventListener("click", btnClick);
+document.getElementById("submit-btn").addEventListener("click", handleRedirect);
 
 previousMovies.addEventListener("click", e => {
-  if (e.target.matches(".previous-movie")) {
-    location.href = `./full-description.html?i=${e.target.dataset.id}`;
-  } else if (e.target.closest(".previous-movie")) {
+  if (e.target.matches("img")) {
     location.href = `./full-description.html?i=${e.target.parentElement.dataset.id}`;
   }
 });
 
-function btnClick(e) {
+function handleRedirect(e) {
   e.preventDefault();
   const searchBar = document.getElementById("search");
-  const criteria = document.getElementById("criteria");
-  handleRedirect({ searchBar: searchBar.value, searchBy: criteria.value });
-}
-
-function handleRedirect({ searchBar, searchBy, year }) {
-  if (searchBy === "IMDb ID") location.href = `./details.html?i=${searchBar}`;
-  if (searchBy === "Title") {
-    let queryParams = "";
-    if (searchBy === "Title") queryParams += `query=${searchBar}`;
-    if (year) queryParams += `&year=${year}`;
-    location.href = `./results.html?${queryParams}`;
-  }
+  if (searchBar !== "") location.href = `./results.html?query=${searchBar.value}`;
 }
