@@ -23,7 +23,8 @@ The application is simple to use. Simply enter your movie's title in the search 
 ## Credits
 
 Collaborators include:
-https://github.com/TuinderJ
-https://github.com/P-AlejandroJimenez
-https://github.com/csara715
-https://github.com/cyounggreen
+
+- https://github.com/TuinderJ
+- https://github.com/P-AlejandroJimenez
+- https://github.com/csara715
+- https://github.com/cyounggreen
