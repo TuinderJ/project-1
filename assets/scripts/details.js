@@ -32,7 +32,6 @@ fetch(tmdbURL)
         return response.json();
       })
       .then(data => {
-        console.log(data);
        document.getElementById("movie-title").textContent = data.Title + "(" + data.Year + ")";
        document.getElementById("poster").src = data.Poster;
        document.getElementById("plot").textContent = data.Plot;
@@ -44,7 +43,6 @@ fetch(tmdbURL)
        const ratingsContainer = document.getElementById("ratings")
        for (let i = 0; i < data.Ratings.length; i++) {
         const rating = data.Ratings[i];
-        console.log(rating)
         const div = document.createElement("div");
         const source = document.createElement("h3");
         const value = document.createElement("p");
@@ -57,6 +55,6 @@ fetch(tmdbURL)
         div.appendChild(value);
 
        }
-        // console.log(data);
+      ;
       });
   });
