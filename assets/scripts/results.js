@@ -13,7 +13,6 @@ fetch(tmdbURL)
     return response.json();
   })
   .then(data => {
-    console.log(data);
     const imgBaseURL = "https://image.tmdb.org/t/p";
     const fileSize = "/w300";
     data.results.forEach(movie => {
@@ -49,3 +48,34 @@ fetch(tmdbURL)
       document.body.appendChild(container);
     });
   });
+
+const history = JSON.parse(localStorage.getItem("movie-history"));
+
+const previousMovies = document.getElementById("previous-movies");
+
+history.forEach(movieID => {
+  const tmdbURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${tmdbKey}`;
+  fetch(tmdbURL)
+    .then(response => {
+      return response.json();
+    })
+    .then(movie => {
+      const previousMovieContainer = document.createElement("div");
+      previousMovieContainer.setAttribute("class", "previous-movie");
+      previousMovieContainer.setAttribute("data-id", movie.id);
+
+      const imgBaseURL = "https://image.tmdb.org/t/p";
+      const fileSize = "/w200";
+      const previousMoviePoster = document.createElement("img");
+      previousMoviePoster.setAttribute("src", `${imgBaseURL}${fileSize}${movie.poster_path}`);
+      previousMoviePoster.setAttribute("class", "max-w-xs max-h-52 rounded");
+
+      const previousMovieTitle = document.createElement("h3");
+      previousMovieTitle.textContent = movie.title;
+
+      previousMovieContainer.appendChild(previousMoviePoster);
+      previousMovieContainer.appendChild(previousMovieTitle);
+
+      previousMovies.appendChild(previousMovieContainer);
+    });
+});

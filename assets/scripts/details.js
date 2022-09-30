@@ -9,6 +9,14 @@ inputQueryParams.forEach(paramater => {
   if (dataset[0] === "i") tmdbMovieID = dataset[1];
 });
 
+let history = JSON.parse(localStorage.getItem("movie-history"));
+if (history === null) history = [];
+if (!history.includes(tmdbMovieID)) {
+  history.unshift(tmdbMovieID);
+  if (history.length > 4) history.splice(4);
+}
+localStorage.setItem("movie-history", JSON.stringify(history));
+
 const tmdbURL = `https://api.themoviedb.org/3/movie/${tmdbMovieID}?api_key=${tmdbKey}`;
 fetch(tmdbURL)
   .then(response => {
@@ -24,6 +32,7 @@ fetch(tmdbURL)
         return response.json();
       })
       .then(data => {
+<<<<<<< HEAD
         console.log(data);
        document.getElementById("movie-title").textContent = data.Title + "(" + data.Year + ")";
        document.getElementById("poster").src = data.Poster;
@@ -49,5 +58,8 @@ fetch(tmdbURL)
         div.appendChild(value);
 
        }
+=======
+        // console.log(data);
+>>>>>>> b5c25600f7f4a77a8802cf5c8ed793e954c28c6f
       });
   });
