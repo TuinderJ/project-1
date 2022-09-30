@@ -1,4 +1,5 @@
-const history = JSON.parse(localStorage.getItem("movie-history"));
+let history = JSON.parse(localStorage.getItem("movie-history"));
+if (history === null) history = [];
 
 const previousMovies = document.getElementById("previous-movies");
 
