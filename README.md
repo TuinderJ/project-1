@@ -17,9 +17,9 @@ SO that I can find a movie I’m looking for and have the relevant information I
 The application is simple to use. Simply enter your movie's title in the search bar, and press submit to get related movies!
 
 
-    ![Screenshot of the index page](/project-1/assets/images/index-screen.JPG)
-    ![Screenshot of the results page](/project-1/assets/images/results-screen.JPG)
-    ![Screenshot of the full details page](/project-1/assets/images/full-details-screen.JPG)
+    ![Screenshot of the index page](/assets/images/index-screen.JPG)
+    ![Screenshot of the results page](/assets/images/results-screen.JPG)
+    ![Screenshot of the full details page](/assets/images/full-details-screen.JPG)
 
 
 ## Credits
