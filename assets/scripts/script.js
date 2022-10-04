@@ -3,8 +3,7 @@ document.getElementById("submit-btn").addEventListener("click", test);
 function test(e) {
   e.preventDefault();
   const searchBar = document.getElementById("search");
-  const criteria = document.getElementById("criteria");
-  handleRedirect({ searchBar: searchBar.value, searchBy: criteria.value });
+  handleRedirect({ searchBar: searchBar.value });
 }
 
 function handleRedirect({ searchBar, searchBy, year }) {
